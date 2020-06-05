@@ -34,4 +34,8 @@ public class TopicService {
         return t;
 
     }
+
+    public void addTopics(Topics topic) {
+        topics.add(topic);
+    }
 }

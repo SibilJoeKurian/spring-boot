@@ -1,10 +1,9 @@
 package sibil.springframework.didemo;
 
 import SpringController.Topics;
+import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,13 +12,18 @@ import java.util.List;
 public class TopicController {
     @Autowired
     TopicService topicService;
-    @RequestMapping("/topics")
+    @RequestMapping(method= RequestMethod.GET,value="/topics")
     public List<Topics> getAllTopics(){
         return topicService.getAlltopics();
     }
-    @RequestMapping("/topics/{id}")
+    @RequestMapping(method =RequestMethod.GET,value="/topics/{id}")
     public Topics getTopic(@PathVariable String id){
         return topicService.getParticularTopic(id);
+    }
+    @RequestMapping(method= RequestMethod.POST,value="/topics")
+    public void addTopics(@RequestBody Topics contentid){
+        System.out.println(contentid);
+        topicService.addTopics(contentid);
     }
 
 }
