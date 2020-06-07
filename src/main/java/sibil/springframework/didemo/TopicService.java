@@ -38,4 +38,23 @@ public class TopicService {
     public void addTopics(Topics topic) {
         topics.add(topic);
     }
+    /**
+     * Returns the particular index of a list
+ **/
+    public String  returnIndex(String id){
+        String value="NULL";
+        Topics t;
+        for(int i=0;i<topics.size();i++){
+            t=topics.get(i);
+            if(t.getId().equals(id))
+                value=String.valueOf(i);
+        }
+        return value;
+    }
+    public void update(Topics topic, String id) {
+       String index=returnIndex(id);
+        if(!index.equals("NULL")){
+            topics.set(Integer.parseInt(index),topic);
+        }
+    }
 }

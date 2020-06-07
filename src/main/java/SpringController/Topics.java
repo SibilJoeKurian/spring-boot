@@ -4,6 +4,11 @@ public class Topics {
     String id;
     String description;
     String name;
+    @Override
+    public String toString(){
+        return id+" "+description+" "+name;
+    }
+
     public Topics(){
 
     }

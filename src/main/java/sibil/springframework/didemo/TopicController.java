@@ -25,5 +25,11 @@ public class TopicController {
         System.out.println(contentid);
         topicService.addTopics(contentid);
     }
+    @RequestMapping(method =RequestMethod.PUT,value="/topics/{id}")
+    public void updateTopic(@RequestBody Topics topic,@PathVariable String id){
+        System.out.println("Printing topic"+topic.toString());
+        System.out.println("Printng id"+id);
+        topicService.update(topic,id);
+    }
 
 }
